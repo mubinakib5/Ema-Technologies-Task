@@ -1,0 +1,60 @@
+.tableContainer {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.tableContainer h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.expenseTable {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.expenseTable th,
+.expenseTable td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+.expenseTable th {
+  background: #f5f5f5;
+  font-weight: 600;
+  color: #333;
+}
+
+.expenseTable tr:hover {
+  background: #f9f9f9;
+}
+
+.loading,
+.error,
+.empty {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.loading {
+  color: #666;
+}
+
+.error {
+  color: #ff4444;
+  background: #fff0f0;
+}
+
+.empty {
+  color: #666;
+  background: #f9f9f9;
+}
