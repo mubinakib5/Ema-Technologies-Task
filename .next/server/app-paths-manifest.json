@@ -1,5 +1,6 @@
 {
-  "/page": "app/page.js",
+  "/_not-found": "app/_not-found.js",
   "/api/limits/route": "app/api/limits/route.js",
+  "/page": "app/page.js",
   "/api/expenses/route": "app/api/expenses/route.js"
 }
