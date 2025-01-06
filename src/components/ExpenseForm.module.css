@@ -1,69 +1,92 @@
 .expenseForm {
-  max-width: 600px;
+  max-width: 800px;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 1.5rem;
+  background: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .expenseForm form {
   display: flex;
   gap: 1rem;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .amountInput,
 .categorySelect,
 .descriptionInput {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background-color: var(--background-color);
+  transition: all 0.2s ease;
+}
+
+.amountInput:focus,
+.categorySelect:focus,
+.descriptionInput:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .amountInput {
-  width: 120px;
+  width: 140px;
 }
 
 .categorySelect {
-  width: 150px;
+  width: 160px;
+  cursor: pointer;
 }
 
 .descriptionInput {
   flex: 1;
+  min-width: 200px;
 }
 
 .submitButton {
-  padding: 0.5rem 1rem;
-  background: #333;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary-color);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 120px;
 }
 
 .submitButton:hover:not(:disabled) {
-  background: #444;
+  background: var(--primary-hover);
+  transform: translateY(-1px);
 }
 
 .submitButton:disabled {
-  background: #999;
+  background: var(--text-secondary);
   cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .error {
-  color: #ff4444;
+  color: var(--danger-color);
   margin-bottom: 1rem;
-  padding: 0.5rem;
-  background: #fff0f0;
-  border-radius: 4px;
-  border: 1px solid #ffdddd;
+  padding: 1rem;
+  background: #fef2f2;
+  border-radius: 8px;
+  border: 1px solid #fee2e2;
+  font-size: 0.95rem;
 }
 
 .success {
-  color: #4CAF50;
+  color: var(--success-color);
   margin-bottom: 1rem;
-  padding: 0.5rem;
-  background: #f0fff0;
-  border-radius: 4px;
-  border: 1px solid #ddffdd;
+  padding: 1rem;
+  background: #f0fdf4;
+  border-radius: 8px;
+  border: 1px solid #dcfce7;
+  font-size: 0.95rem;
 }

@@ -2,50 +2,125 @@
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[3]!./src/components/LimitSetter.module.css ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************/
 .LimitSetter_limitSetter__5g5M7 {
-  max-width: 600px;
+  max-width: 800px;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 1.5rem;
+  background: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .LimitSetter_limitSetter__5g5M7 h2 {
   text-align: center;
-  margin-bottom: 1rem;
-  font-weight: normal;
-  background: #e0e0e0;
-  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 1.25rem;
 }
 
 .LimitSetter_limitSetter__5g5M7 form {
   display: flex;
   gap: 1rem;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .LimitSetter_amountInput__qSfON,
 .LimitSetter_categorySelect__JrnKK {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background-color: var(--background-color);
+  transition: all 0.2s ease;
+}
+
+.LimitSetter_amountInput__qSfON:focus,
+.LimitSetter_categorySelect__JrnKK:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .LimitSetter_amountInput__qSfON {
-  width: 150px;
+  width: 160px;
 }
 
 .LimitSetter_categorySelect__JrnKK {
-  width: 200px;
-}
-
-.LimitSetter_submitButton__OIbxk {
-  padding: 0.5rem 1rem;
-  background: #333;
-  color: white;
-  border: none;
-  border-radius: 4px;
+  width: 180px;
   cursor: pointer;
 }
 
-.LimitSetter_submitButton__OIbxk:hover {
-  background: #444;
+.LimitSetter_submitButton__OIbxk {
+  padding: 0.75rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.LimitSetter_submitButton__OIbxk:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.LimitSetter_submitButton__OIbxk:disabled {
+  background: var(--text-secondary);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.LimitSetter_error__4XpWZ {
+  color: var(--danger-color);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #fef2f2;
+  border-radius: 8px;
+  border: 1px solid #fee2e2;
+  font-size: 0.95rem;
+  text-align: center;
+  animation: LimitSetter_slideIn__X86Mr 0.2s ease-out;
+}
+
+.LimitSetter_success__B70qB {
+  color: var(--success-color);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f0fdf4;
+  border-radius: 8px;
+  border: 1px solid #dcfce7;
+  font-size: 0.95rem;
+  text-align: center;
+  animation: LimitSetter_slideIn__X86Mr 0.2s ease-out;
+}
+
+@keyframes LimitSetter_slideIn__X86Mr {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .LimitSetter_limitSetter__5g5M7 form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .LimitSetter_amountInput__qSfON,
+  .LimitSetter_categorySelect__JrnKK,
+  .LimitSetter_submitButton__OIbxk {
+    width: 100%;
+  }
 }

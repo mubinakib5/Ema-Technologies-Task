@@ -17,7 +17,7 @@ export default function ExpenseForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!amount || !description) {
-      setError("Please fill in all fields");
+      setError("Please fill in both amount and description");
       return;
     }
 
@@ -25,17 +25,15 @@ export default function ExpenseForm() {
     setError(null);
 
     try {
-      // Check if expense exceeds category limit
       const currentLimit = limits[category];
       if (parseFloat(amount) > currentLimit) {
         setError(
-          `This expense exceeds your set limit of $${currentLimit} for ${category}`
+          `This expense of $${amount} exceeds your monthly budget limit of $${currentLimit} for ${category}`
         );
         setStatus("idle");
         return;
       }
 
-      console.log("Submitting expense:", { amount, category, description });
       const result = await dispatch(
         addExpense({
           amount: parseFloat(amount),
@@ -43,8 +41,6 @@ export default function ExpenseForm() {
           description,
         })
       ).unwrap();
-
-      console.log("Expense added successfully:", result);
 
       // Clear form
       setAmount("");
@@ -54,8 +50,7 @@ export default function ExpenseForm() {
       // Reset success message after 3 seconds
       setTimeout(() => setStatus("idle"), 3000);
     } catch (err) {
-      console.error("Failed to add expense:", err);
-      setError(err.message || "Failed to add expense");
+      setError("Failed to record expense. Please try again.");
       setStatus("idle");
     }
   };
@@ -64,46 +59,49 @@ export default function ExpenseForm() {
     <div className={styles.expenseForm}>
       {error && <div className={styles.error}>{error}</div>}
       {status === "success" && (
-        <div className={styles.success}>Expense added successfully!</div>
+        <div className={styles.success}>Expense recorded successfully!</div>
       )}
 
       <form onSubmit={handleSubmit}>
         <input
           type="number"
-          placeholder="Amount"
+          placeholder="Enter amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
           className={styles.amountInput}
           step="0.01"
           min="0"
           disabled={status === "submitting"}
+          aria-label="Expense amount"
         />
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           className={styles.categorySelect}
           disabled={status === "submitting"}
+          aria-label="Expense category"
         >
           <option value="Groceries">Groceries</option>
-          <option value="Transport">Transport</option>
-          <option value="HealthCare">HealthCare</option>
-          <option value="Utility">Utility</option>
-          <option value="Charity">Charity</option>
+          <option value="Transport">Transportation</option>
+          <option value="HealthCare">Healthcare</option>
+          <option value="Utility">Utilities</option>
+          <option value="Charity">Charitable Giving</option>
         </select>
         <input
           type="text"
-          placeholder="Description"
+          placeholder="Enter description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className={styles.descriptionInput}
           disabled={status === "submitting"}
+          aria-label="Expense description"
         />
         <button
           type="submit"
           className={styles.submitButton}
           disabled={status === "submitting"}
         >
-          {status === "submitting" ? "Adding..." : "Add Expense"}
+          {status === "submitting" ? "Recording..." : "Record Expense"}
         </button>
       </form>
     </div>

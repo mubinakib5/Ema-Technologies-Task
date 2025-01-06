@@ -2,62 +2,258 @@
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[7].use[3]!./src/components/ExpenseTable.module.css ***!
   \**********************************************************************************************************************************************************************************************************************************************************************************/
 .ExpenseTable_tableContainer__KMVW6 {
-  max-width: 800px;
+  max-width: 900px;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 1.5rem;
+  background: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .ExpenseTable_tableContainer__KMVW6 h3 {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #333;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.ExpenseTable_filters__4ceTF {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: flex-end;
+}
+
+.ExpenseTable_filterSelect__mfjhP {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background-color: var(--background-color);
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.ExpenseTable_filterSelect__mfjhP:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .ExpenseTable_expenseTable__2H1jJ {
   width: 100%;
-  border-collapse: collapse;
-  border: 1px solid #ccc;
-  background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--card-background);
 }
 
 .ExpenseTable_expenseTable__2H1jJ th,
 .ExpenseTable_expenseTable__2H1jJ td {
-  padding: 0.75rem;
+  padding: 1rem;
   text-align: left;
-  border: 1px solid #ccc;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .ExpenseTable_expenseTable__2H1jJ th {
-  background: #f5f5f5;
+  background: var(--background-color);
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ExpenseTable_expenseTable__2H1jJ tr:last-child td {
+  border-bottom: none;
 }
 
 .ExpenseTable_expenseTable__2H1jJ tr:hover {
-  background: #f9f9f9;
+  background: var(--background-color);
+}
+
+.ExpenseTable_actions__8RPk2 {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.ExpenseTable_editBtn__Sxi4z,
+.ExpenseTable_deleteBtn__vwRjJ,
+.ExpenseTable_saveBtn__N7P_C,
+.ExpenseTable_cancelBtn__JH40o,
+.ExpenseTable_confirmDeleteBtn__qUyto {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ExpenseTable_editBtn__Sxi4z {
+  background: var(--primary-color);
+  color: white;
+}
+
+.ExpenseTable_editBtn__Sxi4z:hover {
+  background: var(--primary-hover);
+}
+
+.ExpenseTable_deleteBtn__vwRjJ {
+  background: #fee2e2;
+  color: var(--danger-color);
+}
+
+.ExpenseTable_deleteBtn__vwRjJ:hover {
+  background: #fecaca;
+}
+
+.ExpenseTable_saveBtn__N7P_C {
+  background: var(--success-color);
+  color: white;
+}
+
+.ExpenseTable_saveBtn__N7P_C:hover {
+  background: #059669;
+}
+
+.ExpenseTable_cancelBtn__JH40o {
+  background: var(--border-color);
+  color: var(--text-secondary);
+}
+
+.ExpenseTable_cancelBtn__JH40o:hover {
+  background: #cbd5e1;
+}
+
+.ExpenseTable_confirmDeleteBtn__qUyto {
+  background: var(--danger-color);
+  color: white;
+}
+
+.ExpenseTable_confirmDeleteBtn__qUyto:hover {
+  background: #dc2626;
+}
+
+.ExpenseTable_editInput__Aijb7,
+.ExpenseTable_editSelect__A3jMq {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  background: white;
+}
+
+.ExpenseTable_editInput__Aijb7:focus,
+.ExpenseTable_editSelect__A3jMq:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.ExpenseTable_deleteDialog__oYd_o {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.ExpenseTable_dialogContent__oX0c2 {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+}
+
+.ExpenseTable_dialogContent__oX0c2 h4 {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.ExpenseTable_dialogContent__oX0c2 p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.ExpenseTable_dialogActions__HUqh6 {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
 }
 
 .ExpenseTable_loading__ynh_l,
 .ExpenseTable_error__xCd9o,
 .ExpenseTable_empty__6LfHm {
   text-align: center;
-  padding: 2rem;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 3rem 2rem;
+  background: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .ExpenseTable_loading__ynh_l {
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .ExpenseTable_error__xCd9o {
-  color: #ff4444;
-  background: #fff0f0;
+  color: var(--danger-color);
+  background: #fef2f2;
 }
 
 .ExpenseTable_empty__6LfHm {
-  color: #666;
-  background: #f9f9f9;
+  color: var(--text-secondary);
+  background: var(--background-color);
+  font-size: 0.95rem;
+}
+
+.ExpenseTable_amount__mD2En {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ExpenseTable_category__zVt9t {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: var(--background-color);
+  color: var(--primary-color);
+}
+
+.ExpenseTable_date__TeDO3 {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .ExpenseTable_filters__4ceTF {
+    flex-direction: column;
+  }
+
+  .ExpenseTable_filterSelect__mfjhP {
+    width: 100%;
+  }
+
+  .ExpenseTable_actions__8RPk2 {
+    flex-direction: column;
+  }
+
+  .ExpenseTable_editBtn__Sxi4z,
+  .ExpenseTable_deleteBtn__vwRjJ,
+  .ExpenseTable_saveBtn__N7P_C,
+  .ExpenseTable_cancelBtn__JH40o {
+    width: 100%;
+  }
 }

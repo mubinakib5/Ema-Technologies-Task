@@ -8,15 +8,15 @@ import { fetchExpenses } from "@/redux/slices/expenseSlice";
 
 // Dynamically import components with loading fallbacks
 const ExpenseForm = dynamic(() => import("./ExpenseForm"), {
-  loading: () => <div>Loading form...</div>,
+  loading: () => <div>Loading expense form...</div>,
 });
 
 const ExpenseSummary = dynamic(() => import("./ExpenseSummary"), {
-  loading: () => <div>Loading summary...</div>,
+  loading: () => <div>Loading expense summary...</div>,
 });
 
 const ExpenseTable = dynamic(() => import("./ExpenseTable"), {
-  loading: () => <div>Loading table...</div>,
+  loading: () => <div>Loading expense history...</div>,
 });
 
 export default function ExpenseTracker() {
@@ -35,30 +35,30 @@ export default function ExpenseTracker() {
           className={`tab ${activeTab === "add" ? "active" : ""}`}
           onClick={() => setActiveTab("add")}
         >
-          Add Expense
+          Record New Expense
         </button>
         <button
           className={`tab ${activeTab === "summary" ? "active" : ""}`}
           onClick={() => setActiveTab("summary")}
         >
-          Summary
+          View Summary & History
         </button>
       </nav>
 
-      <Suspense fallback={<div>Loading limit setter...</div>}>
+      <Suspense fallback={<div>Setting up budget limits...</div>}>
         <LimitSetter />
       </Suspense>
 
       {activeTab === "add" ? (
-        <Suspense fallback={<div>Loading form...</div>}>
+        <Suspense fallback={<div>Preparing expense form...</div>}>
           <ExpenseForm />
         </Suspense>
       ) : (
         <>
-          <Suspense fallback={<div>Loading summary...</div>}>
+          <Suspense fallback={<div>Calculating expense summary...</div>}>
             <ExpenseSummary />
           </Suspense>
-          <Suspense fallback={<div>Loading table...</div>}>
+          <Suspense fallback={<div>Loading expense history...</div>}>
             <ExpenseTable />
           </Suspense>
         </>
