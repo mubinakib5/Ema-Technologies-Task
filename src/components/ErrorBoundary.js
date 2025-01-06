@@ -1,46 +1,55 @@
 "use client";
-import { Component } from "react";
+import { useState, useEffect } from "react";
 
-export default class ErrorBoundary extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false, error: null };
-  }
+export default function ErrorBoundary({ children }) {
+  const [hasError, setHasError] = useState(false);
 
-  static getDerivedStateFromError(error) {
-    return { hasError: true, error };
-  }
+  useEffect(() => {
+    const handleError = (error) => {
+      console.error("Error caught by error boundary:", error);
+      setHasError(true);
+    };
 
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div
+    window.addEventListener("error", handleError);
+    window.addEventListener("unhandledrejection", handleError);
+
+    return () => {
+      window.removeEventListener("error", handleError);
+      window.removeEventListener("unhandledrejection", handleError);
+    };
+  }, []);
+
+  if (hasError) {
+    return (
+      <div
+        style={{
+          padding: "20px",
+          margin: "20px",
+          backgroundColor: "#fff3f3",
+          borderRadius: "8px",
+        }}
+      >
+        <h2>Something went wrong</h2>
+        <button
+          onClick={() => {
+            setHasError(false);
+            window.location.reload();
+          }}
           style={{
-            padding: "20px",
-            margin: "20px",
-            backgroundColor: "#fff3f3",
-            borderRadius: "8px",
+            padding: "8px 16px",
+            backgroundColor: "#333",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            marginTop: "10px",
           }}
         >
-          <h2>Something went wrong</h2>
-          <button
-            onClick={() => window.location.reload()}
-            style={{
-              padding: "8px 16px",
-              backgroundColor: "#333",
-              color: "white",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-              marginTop: "10px",
-            }}
-          >
-            Reload Page
-          </button>
-        </div>
-      );
-    }
-
-    return this.props.children;
+          Reload Page
+        </button>
+      </div>
+    );
   }
+
+  return children;
 }
