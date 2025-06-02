@@ -4,21 +4,20 @@ This repository contains the frontend assessment task completed for Ema Technolo
 
 ## 🚀 Live Demo
 
-:contentReference[oaicite:8]{index=8}:contentReference[oaicite:10]{index=10}
+Check out the live version: [ema-technologies-task.vercel.app](ema-technologies-task.vercel.app)
 
 ## 🛠️ Tech Stack
 
-- **Framework**: :contentReference[oaicite:12]{index=12}
-- **Language**: :contentReference[oaicite:15]{index=15}
-- **Styling**: :contentReference[oaicite:18]{index=18}
-- **Deployment**: :contentReference[oaicite:21]{index=21}:contentReference[oaicite:23]{index=23}
+- **Framework**: Next.js
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+- **Deployment**: Vercel
 
 ## 📂 Features
 
-- :contentReference[oaicite:25]{index=25}
-- :contentReference[oaicite:28]{index=28}
-- :contentReference[oaicite:31]{index=31}
-- :contentReference[oaicite:34]{index=34}:contentReference[oaicite:36]{index=36}
+- Responsive design for all devices
+- Interactive UI with smooth transitions
+- Project showcase with detailed descriptions
 
 ## 🧑‍💻 Getting Started
 
